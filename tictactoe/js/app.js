@@ -93,93 +93,72 @@ document
 
                 // Alert Winner log winning combo
                 if (selectedBoxes[0] == "x" && selectedBoxes[1] == "x" && selectedBoxes[2] == "x") {
-                    winner = "Player 1"
-                    console.log(`Congrats ${winner}`);
-                    gameStarted = false;
                     console.log(`winning combo ${selectedBoxes}`);
+                    winner = true;
                 } else if (selectedBoxes[0] == "o" && selectedBoxes[1] == "o" && selectedBoxes[2] == "o") {
-                    winner = "Player 2"
-                    console.log(`Congrats ${winner}`);
                     console.log(`winning combo ${selectedBoxes}`);
+                    winner = true;
                 } else if (selectedBoxes[3] == "x" && selectedBoxes[4] == "x" && selectedBoxes[5] == "x") {
-                    winner = "Player 1"
-                    console.log(`Congrats ${winner}`);
                     console.log(`winning combo ${selectedBoxes}`);
+                    winner = true;
                 }  else if (selectedBoxes[3] == "o" && selectedBoxes[4] == "o" && selectedBoxes[5] == "o") {
-                    winner = "Player 2"
-                    console.log(`Congrats ${winner}`);
                     console.log(`winning combo ${selectedBoxes}`);
+                    winner = true;
                 }  else if (selectedBoxes[6] == "x" && selectedBoxes[7] == "x" && selectedBoxes[8] == "x") {
-                    winner = "Player 1"
-                    console.log(`Congrats ${winner}`);
                     console.log(`winning combo ${selectedBoxes}`);
+                    winner = true;
                 }  else if (selectedBoxes[6] == "o" && selectedBoxes[7] == "o" && selectedBoxes[8] == "o") {
-                    winner = "Player 2"
-                    console.log(`Congrats ${winner}`);
-                    console.log(`winning combo ${selectedBoxes}`);
+                   console.log(`winning combo ${selectedBoxes}`);
+                    winner = true;
                 }  else if (selectedBoxes[0] == "x" && selectedBoxes[3] == "x" && selectedBoxes[6] == "x") {
-                    winner = "Player 1"
-                    console.log(`Congrats ${winner}`);
                     console.log(`winning combo ${selectedBoxes}`);
+                    winner = true;
                 }  else if (selectedBoxes[0] == "o" && selectedBoxes[3] == "o" && selectedBoxes[6] == "o") {
-                    winner = "Player 2"
-                    console.log(`Congrats ${winner}`);
-                    console.log(`winning combo ${selectedBoxes}`);
+                   console.log(`winning combo ${selectedBoxes}`);
+                    winner = true;
                 }  else if (selectedBoxes[1] == "x" && selectedBoxes[4] == "x" && selectedBoxes[7] == "x") {
-                    winner = "Player 1"
-                    console.log(`Congrats ${winner}`);
                     console.log(`winning combo ${selectedBoxes}`);
+                    winner = true;
                 }  else if (selectedBoxes[1] == "o" && selectedBoxes[4] == "o" && selectedBoxes[7] == "o") {
-                    winner = "Player 2"
-                    console.log(`Congrats ${winner}`);
-                    console.log(`winning combo ${selectedBoxes}`);
+                   console.log(`winning combo ${selectedBoxes}`);
+                    winner = true;
                 }  else if (selectedBoxes[2] == "x" && selectedBoxes[5] == "x" && selectedBoxes[8] == "x") {
-                    winner = "Player 1"
-                    console.log(`Congrats ${winner}`);
                     console.log(`winning combo ${selectedBoxes}`);
+                    winner = true;
                 }  else if (selectedBoxes[2] == "o" && selectedBoxes[5] == "o" && selectedBoxes[8] == "o") {
-                    winner = "Player 2"
-                    console.log(`Congrats ${winner}`);
-                    console.log(`winning combo ${selectedBoxes}`);
+                   console.log(`winning combo ${selectedBoxes}`);
+                    winner = true;
                 }  else if (selectedBoxes[0] == "x" && selectedBoxes[4] == "x" && selectedBoxes[8] == "x") {
-                    winner = "Player 1"
-                    console.log(`Congrats ${winner}`);
                     console.log(`winning combo ${selectedBoxes}`);
+                    winner = true;
                 }  else if (selectedBoxes[0] == "o" && selectedBoxes[4] == "o" && selectedBoxes[8] == "o") {
-                    winner = "Player 2"
-                    console.log(`Congrats ${winner}`);
-                    console.log(`winning combo ${selectedBoxes}`);
+                   console.log(`winning combo ${selectedBoxes}`);
+                    winner = true;
                 } else if (selectedBoxes[2] == "x" && selectedBoxes[4] == "x" && selectedBoxes[6] == "x") {
-                    winner = "Player 1"
-                    console.log(`Congrats ${winner}`);
                     console.log(`winning combo ${selectedBoxes}`);
+                    winner = true;
                 }  else if (selectedBoxes[2] == "o" && selectedBoxes[4] == "o" && selectedBoxes[6] == "o") {
-                    winner = "Player 2"
-                    console.log(`Congrats ${winner}`);
                     console.log(`winning combo ${selectedBoxes}`);
+                    winner = true;
                  } 
 
                  const winnerWinner = () => {
-                    if (turn > 5 && (winner === "x" || winner === "o" )) {
-                        return(`Winner Winner! Chicken Dinner ${winner}` );
-                        gameStarted = false;
-                    } else if (turn === 9 && winner === "undefined") {
+                    if (winner) {
+                        return(`Winner Winner! Chicken Dinner ${player}` );
+                    } else if (!winner && turn == 9) {
                        return("Looks like a draw");
-                       gameStarted = false;
-                    } 
+                    } else {
+                        return('In play...');
+                    }
                 }
 
-                console.log(winnerWinner());
-               
+                console.log( winnerWinner());
             });
 
            
             
         }
 
-        document
-        .querySelectorAll(".box")
-        .innerHTML = ""
     });
 
     
