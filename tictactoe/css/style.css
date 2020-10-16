@@ -1,0 +1,71 @@
+.start {
+  text-align: center;
+}
+
+.start #start-game {
+  padding: 10px 30px;
+  background-color: blue;
+  color: white;
+  border: none;
+  width: 200px;
+  border-radius: 0;
+}
+
+.container {
+  position: relative;
+  height: 606px;
+  width: 606px;
+  margin: 20px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  border: 1px solid black;
+}
+
+.container .box {
+  border: 1px black solid;
+  height: 200px;
+  width: 200px;
+}
+
+.container .box .circle {
+  width: 150px;
+  height: 150px;
+  margin: 25px auto;
+  border: 2px solid gray;
+  border-radius: 50%;
+}
+
+.container .box .x {
+  position: absolute;
+  margin: 20px 10px;
+}
+
+.container .box .x:before, .container .box .x:after {
+  content: '';
+  position: absolute;
+  width: 180px;
+  height: 2px;
+  background-color: gray;
+  border-radius: 1px;
+  top: 80px;
+}
+
+.container .box .x:before {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  left: 0px;
+}
+
+.container .box .x:after {
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  right: -180px;
+}
+/*# sourceMappingURL=style.css.map */
