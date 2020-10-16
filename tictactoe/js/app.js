@@ -17,18 +17,22 @@
   
 //  PROGRAM END
 
+
+
 document
 .addEventListener("DOMContentLoaded", function () {
 
     console.log("DOM is loaded");
 
     let gameStarted = false;
+    let gameOver = false;
 
     let player = "";
 
     document
     .getElementById("start-game")
     .addEventListener("click", function () {
+
 
         console.log("start clicked")
         // game in progress
@@ -38,11 +42,11 @@ document
         // need to figure this out
 
 
-        if (gameStarted) {
+        if (gameStarted && !gameOver) {
             console.log("Game started");
 
             let turn = 0;
-            let winner = "";
+            let winner = false;
             // create new Array with 9 spots where value is null for each
             const selectedBoxes = new Array(9).fill(null);
 
@@ -89,6 +93,7 @@ document
                     boxSwap.innerHTML = '<div class="x"></div>';
                     
                 }
+
 
 
                 // Alert Winner log winning combo
@@ -142,18 +147,42 @@ document
                     winner = true;
                  } 
 
-                 const winnerWinner = () => {
-                    if (winner) {
-                        return(`Winner Winner! Chicken Dinner ${player}` );
-                    } else if (!winner && turn == 9) {
-                       return("Looks like a draw");
-                    } else {
-                        return('In play...');
-                    }
-                }
+            
+           
+                 
 
-                console.log( winnerWinner());
+            const winnerWinner = () => {
+
+                if (winner) {
+                    document
+                    .getElementById("start-box")
+                    .innerHTML = `<button class="start" id="restart"> REFRESH GAME</button>`
+                    gameOver = true;
+                    return(`Winner Winner! Chicken Dinner ${player}` );
+                } else if (!winner && turn == 9) {
+                    document
+                    .getElementById("start-box")
+                    .innerHTML = `<button class="start" id="restart"> REFRESH GAME</button>`
+                    gameOver = true;
+                    return("Looks like a draw");
+                } else {
+                    return('In play...');
+                }
+            }
+
+            
+
+            document
+            .getElementById("status")
+            .innerHTML = `<center><h3>${winnerWinner()}</h3></center>`
+
+            document
+            .getElementById("restart")
+            .addEventListener("click", function() {
+                window.location.reload();
             });
+
+        });
 
            
             
