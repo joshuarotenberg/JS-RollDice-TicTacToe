@@ -13,6 +13,7 @@
 
 //     MODULE winner
 //         alert winner unless draw
+//         add restart button to refresh page   
 //     MODULE END
   
 //  PROGRAM END
@@ -33,8 +34,16 @@ document
     .getElementById("start-game")
     .addEventListener("click", function () {
 
+        
+
 
         console.log("start clicked")
+
+        
+        document
+        .getElementById("status")
+        .innerHTML = `<center><h3>Player 1: Select a box</h3></center>`
+
         // game in progress
         gameStarted = true
 
@@ -74,21 +83,32 @@ document
                     if (selectedBoxes.filter == "x" || selectedBoxes.filter == "o") {
                         return;
                     }
+
+                    if (winner) {
+                        return;
+                    }
+
                     selectedBoxes[boxSelected] = "o";
                     player = "Player 2";
 
                     console.log(`turn ${turn}`);
                     console.log(`player: ${player}`);
-                    console.log(`clicking box ${boxSelected}`);
+                    console.log(`clicking box ${boxSelected}`);                   
 
                     boxSwap.innerHTML = '<div class="circle"></div>';
                 } else {
+
+                    if (winner) {
+                        return;
+                    }
                     selectedBoxes[boxSelected] = "x";
                     player = "Player 1";
 
                     console.log(`turn ${turn}`);
                     console.log(`player: ${player}`);
                     console.log(`clicking box ${boxSelected}`);
+
+                   
 
                     boxSwap.innerHTML = '<div class="x"></div>';
                     
@@ -152,30 +172,33 @@ document
                  
 
             const winnerWinner = () => {
-
                 if (winner) {
+                    gameOver = true;
+
                     document
                     .getElementById("start-box")
                     .innerHTML = `<button class="start" id="restart"> REFRESH GAME</button>`
-                    gameOver = true;
+
                     return(`Winner Winner! Chicken Dinner ${player}` );
                 } else if (!winner && turn == 9) {
+                    gameOver = true;
+
                     document
                     .getElementById("start-box")
                     .innerHTML = `<button class="start" id="restart"> REFRESH GAME</button>`
-                    gameOver = true;
+                    
                     return("Looks like a draw");
                 } else {
                     return('In play...');
                 }
             }
-
             
-
+            /// status text
             document
             .getElementById("status")
             .innerHTML = `<center><h3>${winnerWinner()}</h3></center>`
 
+            /// refresh page on click after win or draw
             document
             .getElementById("restart")
             .addEventListener("click", function() {
@@ -186,7 +209,8 @@ document
 
            
             
-        }
+        } 
+
 
     });
 

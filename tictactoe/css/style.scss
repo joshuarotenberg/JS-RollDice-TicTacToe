@@ -14,8 +14,8 @@
 
 .container {
     position: relative;
-    height: 606px;
-    width: 606px;
+    height: 456px;
+    width: 456px;
     margin: 20px auto;
     display: flex;
     flex-direction: row;
@@ -23,34 +23,34 @@
     border: 1px solid black;
     .box {
         border: 1px black solid;
-        height: 200px;
-        width: 200px;
+        height: 150px;
+        width: 150px;
         .circle {
-            width: 150px;
-            height: 150px;
-            margin: 25px auto;
+            width: 115px;
+            height: 115px;
+            margin: 17px auto;
             border: 2px solid gray;
             border-radius: 50%
             
         }
         .x {
             position: absolute;
-            margin: 20px 10px;
+            margin: 40px -30px;
             &:before,&:after{
                 content:'';
                 position:absolute;
-                width:180px;
-                height:2px;
-                background-color:gray;
-                border-radius:1px;
-                top:80px;
+                width: 150px;
+                height: 2px;
+                background-color: gray;
+                border-radius: 1px;
+                top: 36px;
             }
             
             &:before{
                 -webkit-transform:rotate(45deg);
                 -moz-transform:rotate(45deg);
                 transform:rotate(45deg);
-                left:0px;
+                left:30px;
             }
             &:after{
                 -webkit-transform:rotate(-45deg);
