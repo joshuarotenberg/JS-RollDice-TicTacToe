@@ -60,6 +60,15 @@
             }
            
         }
+        &.winner{
+            background-color: lightgreen;
+            .x:before, .x:after {
+                background-color: darkgreen;
+            }
+            .o {
+                border-color: darkgreen;;
+            }
+        }
     }
     
 }

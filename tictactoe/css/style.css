@@ -68,4 +68,16 @@
   transform: rotate(-45deg);
   right: -180px;
 }
+
+.container .box.winner {
+  background-color: lightgreen;
+}
+
+.container .box.winner .x:before, .container .box.winner .x:after {
+  background-color: darkgreen;
+}
+
+.container .box.winner .o {
+  border-color: darkgreen;
+}
 /*# sourceMappingURL=style.css.map */

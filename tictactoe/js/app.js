@@ -30,6 +30,8 @@ document
 
     let player = "";
 
+    let winners = [];
+
     document
     .getElementById("start-game")
     .addEventListener("click", function () {
@@ -108,101 +110,124 @@ document
                     console.log(`player: ${player}`);
                     console.log(`clicking box ${boxSelected}`);
 
-                   
 
                     boxSwap.innerHTML = '<div class="x"></div>';
                     
-                }
-
-
+                }             
 
                 // Alert Winner log winning combo
                 if (selectedBoxes[0] == "x" && selectedBoxes[1] == "x" && selectedBoxes[2] == "x") {
                     console.log(`winning combo ${selectedBoxes}`);
+                    winners = [0,1,2];
                     winner = true;
                 } else if (selectedBoxes[0] == "o" && selectedBoxes[1] == "o" && selectedBoxes[2] == "o") {
                     console.log(`winning combo ${selectedBoxes}`);
+                    winners = [0,1,2];
                     winner = true;
                 } else if (selectedBoxes[3] == "x" && selectedBoxes[4] == "x" && selectedBoxes[5] == "x") {
                     console.log(`winning combo ${selectedBoxes}`);
+                    winners = [3,4,5];
                     winner = true;
                 }  else if (selectedBoxes[3] == "o" && selectedBoxes[4] == "o" && selectedBoxes[5] == "o") {
                     console.log(`winning combo ${selectedBoxes}`);
+                    winners = [3,4,5];
                     winner = true;
                 }  else if (selectedBoxes[6] == "x" && selectedBoxes[7] == "x" && selectedBoxes[8] == "x") {
                     console.log(`winning combo ${selectedBoxes}`);
+                    winners = [6,7,8];
                     winner = true;
                 }  else if (selectedBoxes[6] == "o" && selectedBoxes[7] == "o" && selectedBoxes[8] == "o") {
                    console.log(`winning combo ${selectedBoxes}`);
+                   winners = [6,7,8];
                     winner = true;
                 }  else if (selectedBoxes[0] == "x" && selectedBoxes[3] == "x" && selectedBoxes[6] == "x") {
                     console.log(`winning combo ${selectedBoxes}`);
+                    winners = [0,3,6];
                     winner = true;
                 }  else if (selectedBoxes[0] == "o" && selectedBoxes[3] == "o" && selectedBoxes[6] == "o") {
                    console.log(`winning combo ${selectedBoxes}`);
+                   winners = [0,3,6];
                     winner = true;
                 }  else if (selectedBoxes[1] == "x" && selectedBoxes[4] == "x" && selectedBoxes[7] == "x") {
                     console.log(`winning combo ${selectedBoxes}`);
+                    winners = [1,4,7];
                     winner = true;
                 }  else if (selectedBoxes[1] == "o" && selectedBoxes[4] == "o" && selectedBoxes[7] == "o") {
                    console.log(`winning combo ${selectedBoxes}`);
+                   winners = [1,4,7];
                     winner = true;
                 }  else if (selectedBoxes[2] == "x" && selectedBoxes[5] == "x" && selectedBoxes[8] == "x") {
                     console.log(`winning combo ${selectedBoxes}`);
+                    winners = [2,5,8];
                     winner = true;
                 }  else if (selectedBoxes[2] == "o" && selectedBoxes[5] == "o" && selectedBoxes[8] == "o") {
                    console.log(`winning combo ${selectedBoxes}`);
+                   winners = [2,5,8];
                     winner = true;
                 }  else if (selectedBoxes[0] == "x" && selectedBoxes[4] == "x" && selectedBoxes[8] == "x") {
                     console.log(`winning combo ${selectedBoxes}`);
+                    winners = [0,4,8];
                     winner = true;
                 }  else if (selectedBoxes[0] == "o" && selectedBoxes[4] == "o" && selectedBoxes[8] == "o") {
                    console.log(`winning combo ${selectedBoxes}`);
+                   winners = [0,4,8];
                     winner = true;
                 } else if (selectedBoxes[2] == "x" && selectedBoxes[4] == "x" && selectedBoxes[6] == "x") {
                     console.log(`winning combo ${selectedBoxes}`);
+                    winners = [2,4,6];
                     winner = true;
                 }  else if (selectedBoxes[2] == "o" && selectedBoxes[4] == "o" && selectedBoxes[6] == "o") {
                     console.log(`winning combo ${selectedBoxes}`);
+                    winners = [2,4,6];
                     winner = true;
                  } 
 
-            
-           
+                 const highLightWinner = (arr) => {
+
+                    arr.forEach(function(entry) {
+                            document
+                            .getElementById(`${entry}`)
+                            .className = "box winner" ;
+                    });
+
+                }
+
+                console.log(highLightWinner(winners));
+
                  
 
-            const winnerWinner = () => {
-                if (winner) {
-                    gameOver = true;
+                const winnerWinner = () => {
+                    if (winner) {
+                        gameOver = true;
 
-                    document
-                    .getElementById("start-box")
-                    .innerHTML = `<button class="start" id="restart"> REFRESH GAME</button>`
+                        document
+                        .getElementById("start-box")
+                        .innerHTML = `<button class="start" id="restart"> REFRESH GAME</button>`
 
-                    return(`Winner Winner! Chicken Dinner ${player}` );
-                } else if (!winner && turn == 9) {
-                    gameOver = true;
+                        return(`Winner Winner! Chicken Dinner ${player}` );
+                    } else if (!winner && turn == 9) {
+                        gameOver = true;
 
-                    document
-                    .getElementById("start-box")
-                    .innerHTML = `<button class="start" id="restart"> REFRESH GAME</button>`
-                    
-                    return("Looks like a draw");
-                } else {
-                    return('In play...');
+                        document
+                        .getElementById("start-box")
+                        .innerHTML = `<button class="start" id="restart"> REFRESH GAME</button>`
+
+                        return("Looks like a draw");
+                    } else {
+                        return('In play...');
+                    }
                 }
-            }
             
-            /// status text
-            document
-            .getElementById("status")
-            .innerHTML = `<center><h3>${winnerWinner()}</h3></center>`
+                /// status text
+                document
+                .getElementById("status")
+                .innerHTML = `<center><h3>${winnerWinner()}</h3></center>`
 
-            /// refresh page on click after win or draw
-            document
-            .getElementById("restart")
-            .addEventListener("click", function() {
-                window.location.reload();
+                /// refresh page on click after win or draw
+                document
+                .getElementById("restart")
+                .addEventListener("click", function() {
+                    window.location.reload();
             });
 
         });
